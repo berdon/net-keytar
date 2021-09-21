@@ -1,0 +1,1 @@
+../node-keytar/src/credentials.h

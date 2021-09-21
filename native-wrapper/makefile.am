@@ -1,0 +1,14 @@
+## Process this file with automake to generate Makefile.in
+
+if OS_DARWIN
+    lib_LTLIBRARIES = libnetkeytar_mac.la
+    libnetkeytar_mac_la_SOURCES = bindable-keytar.cc keytar_mac.cc
+    libnetkeytar_mac_la_CFLAGS  = -framework AppKit -framework Security
+    libnetkeytar_mac_la_LDFLAGS = -version-info 0:0:0
+endif
+
+if OS_LINUX
+    lib_LTLIBRARIES = libnetkeytar_posix.la
+    libnetkeytar_posix_la_SOURCES = bindable-keytar.cc keytar_posix.cc
+    libnetkeytar_posix_la_CFLAGS  = -I/usr/include/libsecret-1 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/gio-unix-2.0 -pthread
+endif
